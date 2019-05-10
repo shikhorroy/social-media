@@ -19,3 +19,17 @@ html, body {
 .menu-text {
 
 }
+
+.user-info {
+  padding: 0px !important;
+}
+
+.round-border {
+  border: 15px solid #fff;
+  border-radius: 100px;
+  margin-top: 15px;
+}
+
+.smedia-theme {
+  background-color: #0077B5;
+}
