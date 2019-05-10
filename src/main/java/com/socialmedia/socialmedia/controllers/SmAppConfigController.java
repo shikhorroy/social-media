@@ -14,9 +14,16 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping(value = "/AppConfiguration")
 public class SmAppConfigController extends RController<SmAppCconfigService> {
 
+  @ResponseBody
   @RequestMapping(value = "/List/", method = RequestMethod.GET)
   public Object list(HttpServletRequest request) {
     return this.service.getDao().findAll();
+  }
+
+  @ResponseBody
+  @RequestMapping(value = "/Edit/{id}/", method = RequestMethod.GET)
+  public Object edit(HttpServletRequest request, @PathVariable Integer id) {
+    return this.service.getDao().findById(id);
   }
 
   @ResponseBody
