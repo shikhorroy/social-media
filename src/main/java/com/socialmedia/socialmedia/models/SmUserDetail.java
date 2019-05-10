@@ -24,6 +24,8 @@ public class SmUserDetail {
 
   private String gender;
 
+  private String designation;
+
   private String firstName;
 
   private String lastName;
@@ -73,6 +75,16 @@ public class SmUserDetail {
 
   public void setGender(String gender) {
     this.gender = gender;
+  }
+
+  @Basic
+  @Column(name = "DESIGNATION", nullable = true, length = 20)
+  public String getDesignation() {
+    return designation;
+  }
+
+  public void setDesignation(String designation) {
+    this.designation = designation;
   }
 
   @Basic
