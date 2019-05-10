@@ -101,7 +101,29 @@
         <div class="status text">
           <i class="far fa-user-circle img"></i>
           <textarea placeholder="What's in your mind ..."></textarea>
-          <input type="submit" value="post" class="smedia-theme"/>
+          <input type="submit" value="Post" class="smedia-theme"/>
+          <div class="row">
+            <div class="col-md-3">
+              <div class="location-seceltor">
+                <i class="fas fa-map-marker-alt" style="font-size: 25px; color: darkgreen"></i>
+                <select name="locationList" class="selectpicker">
+                  <option value="">-- Location --</option>
+                  <c:forEach items="${locationList}" var="location">
+                    <option value="${location.id}">${location.name}</option>
+                  </c:forEach>
+                </select>
+              </div>
+            </div>
+            <div class="col">
+              <div class="privacy-seceltor">
+                <i class="fas fa-lock"style=" font-size: 25px; color: red"></i>
+                <select name="locationList" class="selectpicker">
+                  <option value="PUBLIC">Public</option>
+                  <option value="PRIVATE">Private</option>
+                </select>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
       <div class="overlay"></div>
