@@ -2,6 +2,8 @@ package com.socialmedia.socialmedia.controllers;
 
 import com.socialmedia.socialmedia.daos.SmAppConfigDao;
 import com.socialmedia.socialmedia.models.SmPost;
+import com.socialmedia.socialmedia.models.SmUser;
+import com.socialmedia.socialmedia.models.SmUserDetail;
 import com.socialmedia.socialmedia.roymvc.controller.RController;
 import com.socialmedia.socialmedia.services.HomeService;
 import com.socialmedia.socialmedia.services.SmPostService;
@@ -40,5 +42,21 @@ public class HomeController extends RController<HomeService> {
     List<SmPost> publicPostList = smPostService.getDao().findAllByPrivacyOrderByIdDesc("PUBLIC");
     mv.addObject("publicPostList", publicPostList);
     return mv;
+  }
+
+  @RequestMapping(value = "/Login/", method = RequestMethod.GET)
+  public Object login(HttpServletRequest request) {
+    ModelAndView mv = new ModelAndView();
+    mv.addObject("smUser", new SmUser());
+
+    mv.setViewName("Login");
+    return mv;
+  }
+
+  @RequestMapping(value = "/Login/", method = RequestMethod.POST)
+  public Object loginCheck(HttpServletRequest request, @ModelAttribute("smPost") SmUser user) {
+    boolean isSuccessful = this.service.checkLogin(user);
+    if (isSuccessful) return "redirect:/Home/";
+    return "redirect:/Login/";
   }
 }

@@ -2,12 +2,15 @@ package com.socialmedia.socialmedia.services;
 
 import com.socialmedia.socialmedia.daos.HomeDao;
 import com.socialmedia.socialmedia.daos.SmAppConfigDao;
+import com.socialmedia.socialmedia.daos.SmUserDao;
 import com.socialmedia.socialmedia.daos.SmUserDetailDao;
 import com.socialmedia.socialmedia.models.SmAppConfig;
 import com.socialmedia.socialmedia.models.SmPost;
+import com.socialmedia.socialmedia.models.SmUser;
 import com.socialmedia.socialmedia.models.SmUserDetail;
 import com.socialmedia.socialmedia.roymvc.service.RService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -43,5 +46,19 @@ public class HomeService extends RService<HomeDao> {
     }
     else mv.addObject("smUserDetail", new SmUserDetail());
     return mv;
+  }
+
+  @Autowired
+  SmUserService smUserService;
+
+  public boolean checkLogin(SmUser user) {
+    Optional<SmUser> userOpt = smUserService.getDao().findByUserName(user.getUserName());
+    if (userOpt.isPresent()) {
+      SmUser smUser = userOpt.get();
+      if (smUser.getPassword() == null) return false;
+      BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+      if (encoder.matches(user.getPassword(), smUser.getPassword())) return true;
+    }
+    return false;
   }
 }

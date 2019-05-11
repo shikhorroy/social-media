@@ -9,4 +9,6 @@ import java.util.Optional;
 @Repository
 public interface SmUserDao extends CrudRepository<SmUser, Integer> {
   Optional<SmUser> findByIdAndUserName(int i, String roy);
+
+  Optional<SmUser> findByUserName(String userName);
 }
