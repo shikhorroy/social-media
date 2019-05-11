@@ -1,5 +1,6 @@
 <%@ page import="com.socialmedia.socialmedia.models.SmUserDetail" %>
 <%@ page import="org.joda.time.LocalDate" %>
+<%@ page import="com.socialmedia.socialmedia.models.SmPost" %>
 <!DOCTYPE html>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -151,14 +152,20 @@
                 <div class="col-md-11 font-weight-bold">
                   ${publicPost.user.userName}
                 </div>
-                <div class="col"><i class="fas fa-ellipsis-h"></i></div>
+                <div class="col">
+                  <%
+                    SmPost smPost = (SmPost) pageContext.getAttribute("publicPost");
+                    String postEditUrl = request.getContextPath() + "/Post/Edit/" + smPost.getId() + "/";
+                  %>
+                  <a href="<%=postEditUrl%>"><i class="fas fa-ellipsis-h"></i></a>
+                </div>
               </div>
               <div class="row">
                 <div class="col-md-4">
-                  Last Modified: ${publicPost.modifiedOn}
+                  Updated On: ${publicPost.modifiedOn}
                 </div>
                 <div class="col">
-                  <i class="fas fa-map-marker-alt" style="font-size: 16px; color: darkgreen"></i> ${publicPost.location.name}
+                  <i class="fas fa-map-marker-alt" style="font-size: 16px; color: darkgreen"></i> <c:choose><c:when test="${empty publicPost.location.name}">UNKNOWN LOCATION</c:when><c:otherwise>${publicPost.location.name}</c:otherwise></c:choose>
                 </div>
               </div>
             </div>
