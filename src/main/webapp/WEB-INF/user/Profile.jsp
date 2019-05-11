@@ -52,7 +52,10 @@
                 <a class="dropdown-item" href="#">Action</a>
                 <a class="dropdown-item" href="#">Another action</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
+                <%
+                  String logoutUrl = request.getContextPath() +"/Logout/";
+                %>
+                <a class="dropdown-item" href="<%= logoutUrl %>">Logout</a>
               </div>
             </li>
           </ul>
@@ -113,7 +116,7 @@
             <div class="col">
               <div class="row">
                 <div class="col-md-11 font-weight-bold">
-                  ${publicPost.user.userName}
+                  ${publicPost.user.username}
                 </div>
                 <div class="col">
                   <%

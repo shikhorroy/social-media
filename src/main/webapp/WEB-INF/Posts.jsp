@@ -54,7 +54,7 @@
             <div class="col">
               <div class="row">
                 <div class="col-md-11 font-weight-bold">
-                  ${publicPost.user.userName}
+                  ${publicPost.user.username}
                 </div>
                 <%--<div class="col">--%>
                   <%--<%--%>

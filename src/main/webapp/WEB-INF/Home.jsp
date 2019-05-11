@@ -1,6 +1,5 @@
-<%@ page import="com.socialmedia.socialmedia.models.SmUserDetail" %>
-<%@ page import="org.joda.time.LocalDate" %>
 <%@ page import="com.socialmedia.socialmedia.models.SmPost" %>
+<%@ page import="com.socialmedia.socialmedia.models.SmUserDetail" %>
 <!DOCTYPE html>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -52,7 +51,10 @@
                 <a class="dropdown-item" href="#">Action</a>
                 <a class="dropdown-item" href="#">Another action</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
+                <%
+                  String logoutUrl = request.getContextPath() +"/Logout/";
+                %>
+                <a class="dropdown-item" href="<%= logoutUrl %>">Logout</a>
               </div>
             </li>
           </ul>
@@ -150,15 +152,15 @@
             <div class="col">
               <div class="row">
                 <div class="col-md-11 font-weight-bold">
-                  ${publicPost.user.userName}
+                  ${publicPost.user.username}
                 </div>
-                <div class="col">
-                  <%
-                    SmPost smPost = (SmPost) pageContext.getAttribute("publicPost");
-                    String postEditUrl = request.getContextPath() + "/Post/Edit/" + smPost.getId() + "/";
-                  %>
-                  <a href="<%=postEditUrl%>"><i class="fas fa-ellipsis-h"></i></a>
-                </div>
+                <%--<div class="col">--%>
+                  <%--<%--%>
+                    <%--SmPost smPost = (SmPost) pageContext.getAttribute("publicPost");--%>
+                    <%--String postEditUrl = request.getContextPath() + "/Post/Edit/" + smPost.getId() + "/";--%>
+                  <%--%>--%>
+                  <%--<a href="<%=postEditUrl%>"><i class="fas fa-ellipsis-h"></i></a>--%>
+                <%--</div>--%>
               </div>
               <div class="row">
                 <div class="col-md-4">

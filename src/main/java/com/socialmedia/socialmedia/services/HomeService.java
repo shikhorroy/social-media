@@ -2,7 +2,6 @@ package com.socialmedia.socialmedia.services;
 
 import com.socialmedia.socialmedia.daos.HomeDao;
 import com.socialmedia.socialmedia.daos.SmAppConfigDao;
-import com.socialmedia.socialmedia.daos.SmUserDao;
 import com.socialmedia.socialmedia.daos.SmUserDetailDao;
 import com.socialmedia.socialmedia.models.SmAppConfig;
 import com.socialmedia.socialmedia.models.SmPost;
@@ -10,6 +9,8 @@ import com.socialmedia.socialmedia.models.SmUser;
 import com.socialmedia.socialmedia.models.SmUserDetail;
 import com.socialmedia.socialmedia.roymvc.service.RService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
@@ -29,7 +30,9 @@ public class HomeService extends RService<HomeDao> {
 
   public Object prepareHomeData(HttpServletRequest request) {
     ModelAndView mv = new ModelAndView();
-    Optional<SmUserDetail> smUserDetailOpt = smUserDetailDao.findByUserIdAndUserUserName(1, "roy");
+    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    String currentPrincipalName = authentication.getName();
+    Optional<SmUserDetail> smUserDetailOpt = smUserDetailDao.findByUserUsername("roy");
     if (smUserDetailOpt.isPresent()) {
       SmUserDetail smUserDetail = smUserDetailOpt.get();
 
@@ -52,7 +55,7 @@ public class HomeService extends RService<HomeDao> {
   SmUserService smUserService;
 
   public boolean checkLogin(SmUser user) {
-    Optional<SmUser> userOpt = smUserService.getDao().findByUserName(user.getUserName());
+    Optional<SmUser> userOpt = smUserService.getDao().findByUsername(user.getUsername());
     if (userOpt.isPresent()) {
       SmUser smUser = userOpt.get();
       if (smUser.getPassword() == null) return false;

@@ -9,6 +9,8 @@ import com.socialmedia.socialmedia.models.SmUser;
 import com.socialmedia.socialmedia.models.SmUserDetail;
 import com.socialmedia.socialmedia.roymvc.service.RService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
@@ -31,7 +33,9 @@ public class SmUserService extends RService<SmUserDao> {
 
   public ModelAndView prepareProfileData() {
     ModelAndView mv = new ModelAndView();
-    Optional<SmUserDetail> smUserDetailOpt = smUserDetailDao.findByUserIdAndUserUserName(1, "roy");
+    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    String currentPrincipalName = authentication.getName();
+    Optional<SmUserDetail> smUserDetailOpt = smUserDetailDao.findByUserUsername("roy");
     if (smUserDetailOpt.isPresent()) {
       SmUserDetail smUserDetail = smUserDetailOpt.get();
 
@@ -46,7 +50,7 @@ public class SmUserService extends RService<SmUserDao> {
     }
     else mv.addObject("smUserDetail", new SmUserDetail());
 
-    List<SmPost> publicPostList = smPostService.getDao().findAllByUserIdAndUserUserNameOrderByIdDesc(1, "roy");
+    List<SmPost> publicPostList = smPostService.getDao().findAllByUserIdAndUserUsernameOrderByIdDesc(1, "roy");
     mv.addObject("publicPostList", publicPostList);
 
     mv.setViewName("user/Profile");

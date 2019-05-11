@@ -34,11 +34,11 @@
 
   <div class="content row min-height reset-padding">
     <div class="content-left col-sm-3">
-      <section>
-        <div  class="box-design bg-success">
-          <b><i class="fas fa-user-plus"></i> User Registration</b>
-        </div>
-      </section>
+      <%--<section>--%>
+        <%--<div  class="box-design bg-success">--%>
+          <%--<b><i class="fas fa-user-plus"></i> User Registration</b>--%>
+        <%--</div>--%>
+      <%--</section>--%>
     </div>
     <div class="content-mid col-sm-6 box-design form-group" style="margin-top: 20px !important;">
       <% String postUrl = request.getContextPath() + "/User/Registration/";%>
@@ -54,7 +54,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"> <i class="fa fa-user required"> </i> </span>
                 </div>
-                <form:input path="user.userName" class="form-control" placeholder="username" type="text" required="required"/>
+                <form:input path="user.username" class="form-control" placeholder="username" type="text" required="required"/>
               </div>
               <div class="form-group input-group">
                 <div class="input-group-prepend">
@@ -106,11 +106,11 @@
       </div>
     </div>
     <div class="content-right col-sm-3">
-      <section>
-        <div  class="box-design fix-right-pan-box">
-          Welcome To Social Media.
-        </div>
-		</section>
+      <%--<section>--%>
+        <%--<div  class="box-design fix-right-pan-box">--%>
+          <%--Welcome To Social Media.--%>
+        <%--</div>--%>
+		<%--</section>--%>
     </div>
   </div>
 </div>
@@ -119,8 +119,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-<spring:url value="/js/user/registration.js" var="springJs"/>
-<script src="${springJs}"></script>
+<%--<spring:url value="/js/user/registration.js" var="springJs"/>--%>
+<%--<script src="${springJs}"></script>--%>
 </body>
 
 </html>

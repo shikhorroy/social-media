@@ -20,7 +20,7 @@ public class SmUser {
 
   private Integer id;
 
-  private String userName;
+  private String username;
 
   private String password;
 
@@ -45,12 +45,12 @@ public class SmUser {
 
   @Basic
   @Column(name = "USERNAME", nullable = true, length = 50)
-  public String getUserName() {
-    return this.userName;
+  public String getUsername() {
+    return this.username;
   }
 
-  public void setUserName(String name) {
-    this.userName = name;
+  public void setUsername(String username) {
+    this.username = username;
   }
 
   @Basic
