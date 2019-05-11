@@ -38,8 +38,8 @@
         <div class="w-50">
           <ul class="nav" style="float: right">
             <li class="nav-item active">
-              <a class="nav-link text-white" href="#"><i class="fas fa-user-circle"></i><span
-                  class="menu-text"> Profile</span></a>
+              <% String profileUrl = request.getContextPath() + "/User/Profile/";%>
+              <a class="nav-link text-white" href="<%= profileUrl %>"><i class="fas fa-user-circle"></i> <span class="menu-text"> Profile</span></a>
             </li>
             <li class="nav-item active">
               <a class="nav-link text-white" href="#"><i class="fas fa-bell"></i> Notification</a>
