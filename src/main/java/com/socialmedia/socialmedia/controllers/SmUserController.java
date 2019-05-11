@@ -52,4 +52,10 @@ public class SmUserController extends RController<SmUserService> {
   public Object registrationEdit(HttpServletRequest request, @PathVariable String id) {
     return null;
   }
+
+  @RequestMapping(value = "/Profile/", method = RequestMethod.GET)
+  public Object profile(HttpServletRequest request) {
+    ModelAndView mv = this.service.prepareProfileData();
+    return mv;
+  }
 }
