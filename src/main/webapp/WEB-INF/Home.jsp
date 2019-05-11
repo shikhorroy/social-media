@@ -66,7 +66,7 @@
         <div class="box-design user-info reset-padding">
           <div class="row reset-padding smedia-theme" style="max-height: 140px">
             <div class="col text-center">
-              <i class="fas fa-user-circle round-border" style="font-size: 120px;color:"></i>
+              <i class="fas fa-user-circle round-border" style="font-size: 120px;"></i>
             </div>
           </div>
           <div class="row">
@@ -139,11 +139,41 @@
         </section>
       </form:form>
       <div class="overlay"></div>
-      <section>
+
+      <c:forEach items="${publicPostList}" var="publicPost">
         <div class="box-design fix-mid-pan-box">
-          this is sample info
+          <div class="row user-summary">
+            <div class="col-md-1">
+              <i class="fas fa-user-circle post-profile-pic" style="font-size: 60px;"></i>
+            </div>
+            <div class="col">
+              <div class="row">
+                <div class="col-md-11 font-weight-bold">
+                  ${publicPost.user.userName}
+                </div>
+                <div class="col"><i class="fas fa-ellipsis-h"></i></div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  Last Modified: ${publicPost.modifiedOn}
+                </div>
+                <div class="col">
+                  <i class="fas fa-map-marker-alt" style="font-size: 16px; color: darkgreen"></i> ${publicPost.location.name}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col post-content">
+              <section>
+                <div class="">
+                    ${publicPost.status}
+                </div>
+              </section>
+            </div>
+          </div>
         </div>
-      </section>
+      </c:forEach>
       <%--<% String postUrl = request.getContextPath() + "/User/Registration/Add/";%>--%>
       <%--<form:form method="POST" action="<%=postUrl%>" modelAttribute="smUser">--%>
       <%--<table>--%>

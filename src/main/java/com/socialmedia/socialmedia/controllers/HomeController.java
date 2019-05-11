@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Controller
 @RequestMapping(value = "")
@@ -24,6 +25,8 @@ public class HomeController extends RController<HomeService> {
   @RequestMapping(value = "/Home/", method = RequestMethod.GET)
   public Object home(HttpServletRequest request) {
     ModelAndView mv = (ModelAndView) this.service.prepareHomeData(request);
+    List<SmPost> publicPostList = smPostService.getDao().findAllByPrivacy("PUBLIC");
+    mv.addObject("publicPostList", publicPostList);
     return mv;
   }
 
@@ -34,6 +37,8 @@ public class HomeController extends RController<HomeService> {
   public Object post(HttpServletRequest request, @ModelAttribute("smPost") SmPost post) {
     boolean isSuccessful = smPostService.savePostData(post);
     ModelAndView mv = (ModelAndView) this.service.prepareHomeData(request);
+    List<SmPost> publicPostList = smPostService.getDao().findAllByPrivacy("PUBLIC");
+    mv.addObject("publicPostList", publicPostList);
     return mv;
   }
 }

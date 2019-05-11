@@ -4,6 +4,9 @@ import com.socialmedia.socialmedia.models.SmPost;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface SmPostDao extends CrudRepository<SmPost, Integer> {
+  List<SmPost> findAllByPrivacy(String privacy);
 }

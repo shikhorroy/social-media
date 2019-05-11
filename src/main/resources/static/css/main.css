@@ -33,3 +33,12 @@ html, body {
 .smedia-theme {
   background-color: #0077B5;
 }
+
+.post-profile-pic {
+  border: 5px solid darkgray;
+  border-radius: 40px 40px 40px 40px;
+}
+
+.user-summary {
+  margin-bottom: 10px;
+}
