@@ -25,7 +25,7 @@ public class HomeController extends RController<HomeService> {
   @RequestMapping(value = "/Home/", method = RequestMethod.GET)
   public Object home(HttpServletRequest request) {
     ModelAndView mv = (ModelAndView) this.service.prepareHomeData(request);
-    List<SmPost> publicPostList = smPostService.getDao().findAllByPrivacy("PUBLIC");
+    List<SmPost> publicPostList = smPostService.getDao().findAllByPrivacyOrderByIdDesc("PUBLIC");
     mv.addObject("publicPostList", publicPostList);
     return mv;
   }
@@ -37,7 +37,7 @@ public class HomeController extends RController<HomeService> {
   public Object post(HttpServletRequest request, @ModelAttribute("smPost") SmPost post) {
     boolean isSuccessful = smPostService.savePostData(post);
     ModelAndView mv = (ModelAndView) this.service.prepareHomeData(request);
-    List<SmPost> publicPostList = smPostService.getDao().findAllByPrivacy("PUBLIC");
+    List<SmPost> publicPostList = smPostService.getDao().findAllByPrivacyOrderByIdDesc("PUBLIC");
     mv.addObject("publicPostList", publicPostList);
     return mv;
   }

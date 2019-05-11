@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface SmPostDao extends CrudRepository<SmPost, Integer> {
-  List<SmPost> findAllByPrivacy(String privacy);
+  List<SmPost> findAllByPrivacyOrderByIdDesc(String privacy);
 }
