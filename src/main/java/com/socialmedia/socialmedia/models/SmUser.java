@@ -22,6 +22,8 @@ public class SmUser {
 
   private String userName;
 
+  private String password;
+
   private String smConfigTypeId;
 
   private Integer inactive;
@@ -49,6 +51,16 @@ public class SmUser {
 
   public void setUserName(String name) {
     this.userName = name;
+  }
+
+  @Basic
+  @Column(name = "PASSWORD", nullable = true, length = 50)
+  public String getPassword() {
+    return this.password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
   }
 
   @Basic
