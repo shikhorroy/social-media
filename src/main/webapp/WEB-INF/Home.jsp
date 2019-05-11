@@ -201,7 +201,7 @@
     <div class="content-right col-sm-3">
       <section>
         <div class="box-design fix-right-pan-box">
-          this is sample info
+          Welcome To Social Media.
         </div>
       </section>
     </div>

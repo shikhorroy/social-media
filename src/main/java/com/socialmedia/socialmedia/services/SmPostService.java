@@ -21,4 +21,16 @@ public class SmPostService extends RService<SmPostDao> {
     }
     return false;
   }
+
+  public boolean updatePost(SmPost post) {
+    try {
+      post.setModifiedOn(LocalDate.now());
+      this.dao.save(post);
+      return true;
+    }
+    catch (Exception ex) {
+      ex.printStackTrace();
+    }
+    return false;
+  }
 }

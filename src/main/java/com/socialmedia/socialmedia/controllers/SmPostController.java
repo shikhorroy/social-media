@@ -9,6 +9,7 @@ import com.socialmedia.socialmedia.roymvc.controller.RController;
 import com.socialmedia.socialmedia.services.SmPostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -35,7 +36,7 @@ public class SmPostController extends RController<SmPostService> {
 
   @Autowired
   SmAppConfigDao smAppConfigDao;
-  
+
   @RequestMapping(value = "/Edit/{id}/", method = RequestMethod.GET)
   public Object edit(HttpServletRequest request, @PathVariable Integer id) {
     ModelAndView mv = new ModelAndView();
@@ -60,5 +61,11 @@ public class SmPostController extends RController<SmPostService> {
 
     mv.setViewName("post/Edit");
     return mv;
+  }
+
+  @RequestMapping(value = "/Edit/{id}/", method = RequestMethod.POST)
+  public Object editSave(HttpServletRequest request, @PathVariable Integer id, @ModelAttribute("smPost") SmPost post) {
+    boolean isSuccessful = this.service.updatePost(post);
+    return "redirect:/Home/";
   }
 }

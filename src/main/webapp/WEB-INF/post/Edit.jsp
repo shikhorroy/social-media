@@ -103,7 +103,9 @@
     </div>
     <div class="content-mid col-sm-6 reset-padding">
       <%
-        String postUrl = request.getContextPath() + "/Post/Edit/{}/";
+        SmPost smPost = (SmPost) request.getAttribute("smPost");
+        Integer id = smPost.getId();
+        String postUrl = request.getContextPath() + "/Post/Edit/"+ id +"/";
       %>
       <form:form method="POST" action="<%=postUrl%>" modelAttribute="smPost">
         <section>
@@ -144,7 +146,7 @@
     <div class="content-right col-sm-3">
       <section>
         <div class="box-design fix-right-pan-box">
-          this is sample info
+          Welcome To Social Media.
         </div>
       </section>
     </div>
