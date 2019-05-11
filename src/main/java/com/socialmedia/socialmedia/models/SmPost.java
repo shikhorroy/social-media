@@ -3,6 +3,7 @@ package com.socialmedia.socialmedia.models;
 
 import org.hibernate.annotations.ResultCheckStyle;
 import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Type;
 import org.hibernate.annotations.Where;
 import org.joda.time.LocalDate;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -74,6 +75,7 @@ public class SmPost {
 
   @Basic
   @Column(name = "POSTED_ON", nullable = true)
+  @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
   public LocalDate getPostedOn() {
     return postedOn;
   }
@@ -84,6 +86,7 @@ public class SmPost {
 
   @Basic
   @Column(name = "MODIFIED_ON", nullable = true)
+  @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
   public LocalDate getModifiedOn() {
     return modifiedOn;
   }
