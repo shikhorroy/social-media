@@ -9,6 +9,7 @@ import com.socialmedia.socialmedia.models.SmUser;
 import com.socialmedia.socialmedia.models.SmUserDetail;
 import com.socialmedia.socialmedia.roymvc.service.RService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -55,6 +56,8 @@ public class SmUserService extends RService<SmUserDao> {
   @Transactional
   public boolean saveUserDetail(SmUserDetail userDetail) {
     SmUser user = userDetail.getUser();
+    BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+    user.setPassword(encoder.encode(user.getPassword()));
     user.setInactive(0);
     user.setDeleted(0);
     try {

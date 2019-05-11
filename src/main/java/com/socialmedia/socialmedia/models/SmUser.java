@@ -54,7 +54,7 @@ public class SmUser {
   }
 
   @Basic
-  @Column(name = "PASSWORD", nullable = true, length = 50)
+  @Column(name = "PASSWORD", nullable = true, length = 100)
   public String getPassword() {
     return this.password;
   }
