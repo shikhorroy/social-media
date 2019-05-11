@@ -42,40 +42,68 @@
     </div>
     <div class="content-mid col-sm-6 box-design form-group" style="margin-top: 20px !important;">
       <% String postUrl = request.getContextPath() + "/User/Registration/";%>
-      <form:form method="POST" action="<%=postUrl%>" modelAttribute="smUserDetail">
-        <div class="form-group">
-          <form:label path="user.userName" cssClass="form-label required">User Name </form:label><form:input path="user.userName" required="required"/>
+      <div class="container">
+        <div class="card bg-light">
+          <article class="card-body mx-auto" style="max-width: 400px;">
+            <h4 class="card-title mt-3 text-center">Registration</h4>
+            <p class="divider-text">
+              <span class="bg-light"> Sign-up </span>
+            </p>
+            <form:form method="POST" action="<%=postUrl%>" modelAttribute="smUserDetail">
+              <div class="form-group input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"> <i class="fa fa-user required"> </i> </span>
+                </div>
+                <form:input path="user.userName" class="form-control" placeholder="username" type="text" required="required"/>
+              </div>
+              <div class="form-group input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"> <i class="fa fa-user required"></i> </span>
+                </div>
+                <form:input path="firstName" class="form-control" placeholder="First Name" type="text" required="required"/>
+                <form:input path="lastName" class="form-control" placeholder="Last Name" type="text" required="required"/>
+              </div>
+              <div class="form-group input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"> <i class="fa fa-envelope"></i></span>
+                </div>
+                <form:input path="email" class="form-control" placeholder="abcd@host.com" type="email"/>
+              </div> 
+              <div class="form-group input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+                </div>
+                <form:input path="phone" class="form-control" placeholder="Phone number" type="text"/>
+              </div> 
+              <div class="form-group input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"> <i class="fa fa-building"></i></span>
+                </div>
+                <form:input path="designation" class="form-control" placeholder="Designation" type="text"/>
+              </div>
+              <div class="form-group input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text required"> <i class="fa fa-lock"></i> </span>
+                </div>
+                <form:input path="user.password" class="form-control" placeholder="Password" type="password"/>
+              </div> 
+              <div class="form-group input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text required"> <i class="fa fa-lock"></i> </span>
+                </div>
+                <form:input path="" class="form-control" placeholder="Repeat Password" type="password"/>
+              </div> 
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block"> Create Account  </button>
+              </div>
+              <%
+                String loginUrl = request.getContextPath() + "/Login/";
+              %>
+              <p class="text-center">Have an account? <a href="<%= loginUrl %>">Log In</a> </p>
+            </form:form>
+          </article>
         </div>
-        <div class="form-group">
-          <form:label path="user.password" cssClass="form-label required">Password </form:label><form:input path="user.password" required="required" type="password"/>
-        </div>
-        <div class="form-group">
-          <form:label path="" cssClass="form-label required">Confirm Password </form:label><form:input path="" required="requi-red" type="password"/>
-        </div>
-        <div class="form-group">
-          <form:label path="firstName" cssClass="form-label required">First Name </form:label><form:input path="firstName" required="required"/>
-        </div>
-        <div class="form-group">
-          <form:label path="lastName" cssClass="form-label required">Last Name </form:label><form:input path="lastName" required="required"/>
-        </div>
-        <div class="form-group">
-          <form:label path="designation" cssClass="form-label">Designation </form:label><form:input path="designation"/>
-        </div>
-        <div class="form-group">
-          <form:label path="email" cssClass="form-label">Email </form:label><form:input path="email" type="email" placeholder="abcd@host.com"/>
-        </div>
-        <div class="form-group">
-          <form:label path="phone" cssClass="form-label required">Phone </form:label><form:input path="phone" required="required"/>
-        </div>
-        <div class="form-group">
-          <form:label path="address" cssClass="form-label">Address </form:label><form:input path="address"/>
-        </div>
-        <div class="row">
-          <div class="col">
-            <input name="action" type="submit" value="REGISTER" class="smedia-theme" style="color: white;padding: 5px; width: 90px"/>
-          </div>
-        </div>
-      </form:form>
+      </div>
     </div>
     <div class="content-right col-sm-3">
       <section>
