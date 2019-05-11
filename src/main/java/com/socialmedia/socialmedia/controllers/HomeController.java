@@ -1,6 +1,7 @@
 package com.socialmedia.socialmedia.controllers;
 
 import com.socialmedia.socialmedia.daos.SmAppConfigDao;
+import com.socialmedia.socialmedia.models.SmAppConfig;
 import com.socialmedia.socialmedia.models.SmPost;
 import com.socialmedia.socialmedia.models.SmUser;
 import com.socialmedia.socialmedia.models.SmUserDetail;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping(value = "")
@@ -58,5 +60,15 @@ public class HomeController extends RController<HomeService> {
     boolean isSuccessful = this.service.checkLogin(user);
     if (isSuccessful) return "redirect:/Home/";
     return "redirect:/Login/";
+  }
+
+  @RequestMapping(value = "/Posts/", method = RequestMethod.GET)
+  public Object publicPosts(HttpServletRequest request) {
+    ModelAndView mv = new ModelAndView();
+    List<SmPost> publicPostList = smPostService.getDao().findAllByPrivacyOrderByIdDesc("PUBLIC");
+    mv.addObject("publicPostList", publicPostList);
+
+    mv.setViewName("Posts");
+    return mv;
   }
 }
