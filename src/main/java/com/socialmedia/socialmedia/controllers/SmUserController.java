@@ -1,6 +1,7 @@
 package com.socialmedia.socialmedia.controllers;
 
 import com.socialmedia.socialmedia.models.SmUser;
+import com.socialmedia.socialmedia.models.SmUserDetail;
 import com.socialmedia.socialmedia.roymvc.controller.RController;
 import com.socialmedia.socialmedia.services.SmUserService;
 import org.springframework.stereotype.Controller;
@@ -29,22 +30,19 @@ public class SmUserController extends RController<SmUserService> {
     return this.service.getDao().findById(id);
   }
 
-  @ResponseBody
-  @RequestMapping(value = "/Registration/List/", method = RequestMethod.GET)
-  public Object registrationList(HttpServletRequest request) {
-    return null;
-  }
-
-  @RequestMapping(value = "/Registration/Add/", method = RequestMethod.GET)
+  @RequestMapping(value = "/Registration/", method = RequestMethod.GET)
   public ModelAndView registrationAdd(HttpServletRequest request) {
-    ModelAndView mv = new ModelAndView("registration/Add", "smUser", new SmUser());
+    ModelAndView mv = new ModelAndView();
+    mv.addObject("smUserDetail", new SmUserDetail());
+
+    mv.setViewName("user/Registration");
     return mv;
   }
 
-  @ResponseBody
-  @RequestMapping(value = "/Registration/Add/", method = RequestMethod.POST)
-  public Object registrationAddSave(HttpServletRequest request, @ModelAttribute("smUser") SmUser user) {
-    return user;
+  @RequestMapping(value = "/Registration/", method = RequestMethod.POST)
+  public Object registrationAddSave(HttpServletRequest request, @ModelAttribute("smUserDetail") SmUserDetail userDetail) {
+    boolean isSuccessful = this.service.saveUserDetail(userDetail);
+    return "redirect:/Home/";
   }
 
   @ResponseBody

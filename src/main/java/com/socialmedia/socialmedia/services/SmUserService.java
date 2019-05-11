@@ -5,12 +5,14 @@ import com.socialmedia.socialmedia.daos.SmUserDao;
 import com.socialmedia.socialmedia.daos.SmUserDetailDao;
 import com.socialmedia.socialmedia.models.SmAppConfig;
 import com.socialmedia.socialmedia.models.SmPost;
+import com.socialmedia.socialmedia.models.SmUser;
 import com.socialmedia.socialmedia.models.SmUserDetail;
 import com.socialmedia.socialmedia.roymvc.service.RService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,5 +50,24 @@ public class SmUserService extends RService<SmUserDao> {
 
     mv.setViewName("user/Profile");
     return mv;
+  }
+
+  @Transactional
+  public boolean saveUserDetail(SmUserDetail userDetail) {
+    SmUser user = userDetail.getUser();
+    user.setInactive(0);
+    user.setDeleted(0);
+    try {
+      user = this.dao.save(user);
+      userDetail.setUser(user);
+      userDetail.setInactive(0);
+      userDetail.setDeleted(0);
+      this.smUserDetailDao.save(userDetail);
+      return true;
+    }
+    catch (Exception ex) {
+      ex.printStackTrace();
+    }
+    return false;
   }
 }
