@@ -41,6 +41,7 @@ public class HomeService extends RService<HomeDao> {
 
       mv.setViewName("Home");
     }
+    else mv.addObject("smUserDetail", new SmUserDetail());
     return mv;
   }
 }
