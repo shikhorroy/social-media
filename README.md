@@ -29,3 +29,10 @@ Working branch: master (commit: dcdef2b4fb5b182381673322da8df658c3fd1dd8)
 user: user, password 123
 
 user: roy, password: 123
+
+
+# Deployment Branch:
+release/version_0.1
+
+If you want you can take a pull into your tomcat and just run your tomcat server.
+I have test my application in apache-tomcat-8.5.38
