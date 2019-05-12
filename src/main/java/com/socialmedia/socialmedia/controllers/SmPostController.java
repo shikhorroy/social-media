@@ -72,4 +72,16 @@ public class SmPostController extends RController<SmPostService> {
     boolean isSuccessful = this.service.updatePost(post);
     return "redirect:/Home/";
   }
+
+  @RequestMapping(value = "/Delete/{id}/", method = RequestMethod.GET)
+  public Object deleteSave(HttpServletRequest request, @PathVariable Integer id, @ModelAttribute("smPost") SmPost post) {
+    try{
+      this.service.getDao().delete(post);
+      return "redirect:/Home/";
+    }
+    catch (Exception ex) {
+      ex.printStackTrace();
+    }
+    return "redirect:/User/Profile/";
+  }
 }

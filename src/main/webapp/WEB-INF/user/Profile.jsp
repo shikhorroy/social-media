@@ -125,8 +125,10 @@
                   <%
                     SmPost smPost = (SmPost) pageContext.getAttribute("publicPost");
                     String postEditUrl = request.getContextPath() + "/Post/Edit/" + smPost.getId() + "/";
+                    String postDeleteUrl = request.getContextPath() + "/Post/Delete/" + smPost.getId() + "/";
                   %>
-                  <a href="<%=postEditUrl%>"><i class="fas fa-ellipsis-h"></i></a>
+                  <a href="<%=postEditUrl%>"><i class="fas fa-ellipsis-h"></i></a>&nbsp&nbsp
+                  <a href="<%=postDeleteUrl%>"><i class="fas fa-eraser"></i></a>
                 </div>
               </div>
               <div class="row">
