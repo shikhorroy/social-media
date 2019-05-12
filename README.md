@@ -24,3 +24,8 @@ All the DDLs are run during project run. And as all the initial db queries are w
 Nothing more complex thing to do. Just add maven run configuration in IntellIJ IDEA with:: Command Line -> spring-boot:run
 
 Working branch: master (commit: b749b49feecf1c2b11d7c1aea1b9d6c1e9709980)
+
+# Initial User Password:
+user: user, password 123
+
+user: roy, password: 123
