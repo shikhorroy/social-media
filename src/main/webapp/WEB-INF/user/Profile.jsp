@@ -42,7 +42,10 @@
               <a class="nav-link text-white" href="<%= profileUrl %>"><i class="fas fa-user-circle"></i> <span class="menu-text"> Profile</span></a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link text-white" href="#"><i class="fas fa-bell"></i> Notification</a>
+              <%
+                String postsUrl = request.getContextPath() + "/Posts/";
+              %>
+              <a class="nav-link text-white" href="<%= postsUrl%>"><i class="fas fa-book"></i> Posts </a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"

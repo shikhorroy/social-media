@@ -40,7 +40,7 @@
         <%--</div>--%>
       <%--</section>--%>
     </div>
-    <div class="content-mid col-sm-6 box-design form-group" style="margin-top: 20px !important;">
+    <div class="content-mid col-sm-6 form-group" style="margin-top: 20px !important;">
       <div class="container login-container align-middle">
         <div class="row">
           <div class="col-3"></div>
