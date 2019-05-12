@@ -117,7 +117,7 @@
           <form:input path="deleted" value="0" type="hidden"></form:input>
           <div class="status text">
             <i class="far fa-user-circle img"></i>
-            <form:textarea path="status" placeholder="What's in your mind ..."/>-
+            <form:textarea path="status" placeholder="What's in your mind ..."/>
             <input type="submit" value="Post" class="smedia-theme"/>
             <div class="row">
               <div class="col-md-3">
