@@ -65,8 +65,8 @@ public class SmUserService extends RService<SmUserDao> {
     user.setInactive(0);
     user.setDeleted(0);
     try {
-      user = this.dao.save(user);
-      userDetail.setUser(user);
+      SmUser newUser = this.dao.save(user);
+      userDetail.setUserId(newUser.getId());
       userDetail.setInactive(0);
       userDetail.setDeleted(0);
       this.smUserDetailDao.save(userDetail);
