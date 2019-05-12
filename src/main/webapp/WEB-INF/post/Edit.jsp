@@ -42,17 +42,23 @@
               <a class="nav-link text-white" href="<%= profileUrl %>"><i class="fas fa-user-circle"></i> <span class="menu-text"> Profile</span></a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link text-white" href="#"><i class="fas fa-bell"></i> Notification</a>
+              <%
+                String postsUrl = request.getContextPath() + "/Posts/";
+              %>
+              <a class="nav-link text-white" href="<%= postsUrl%>"><i class="fas fa-book"></i> Posts </a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-cog"></i> Settings</a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
+                <%--<a class="dropdown-item" href="#">Action</a>--%>
+                <%--<a class="dropdown-item" href="#">Another action</a>--%>
+                <%--<div class="dropdown-divider"></div>--%>
+                  <%
+                    String logoutUrl = request.getContextPath() +"/Logout/";
+                  %>
+                  <a class="dropdown-item" href="<%= logoutUrl %>">Logout</a>
               </div>
             </li>
           </ul>

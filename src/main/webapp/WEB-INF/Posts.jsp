@@ -29,7 +29,8 @@
         <div class="w-50">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link text-white" href="">Social Media</a>
+              <% String homeUrl = request.getContextPath() + "/Home/";%>
+              <a class="nav-link text-white" href="<%= homeUrl %>">Social Media</a>
             </li>
           </ul>
         </div>
