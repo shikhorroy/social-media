@@ -10,5 +10,5 @@ import java.util.List;
 public interface SmPostDao extends CrudRepository<SmPost, Integer> {
   List<SmPost> findAllByPrivacyOrderByIdDesc(String privacy);
 
-  List<SmPost> findAllByUserIdAndUserUsernameOrderByIdDesc(Integer useid, String username);
+  List<SmPost> findAllByUserUsernameOrderByIdDesc(String username);
 }

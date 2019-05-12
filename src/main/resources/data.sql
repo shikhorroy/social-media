@@ -9,9 +9,9 @@ INSERT INTO app.sm_app_config (id, deleted, description, inactive, name, sm_conf
 INSERT INTO app.sm_app_config (id, deleted, description, inactive, name, sm_config_type_id) VALUES (3, 0, 'Khulna', 0, 'Khulna', 'locations');
 
 INSERT INTO app.sm_user_detail (id, address, deleted, email, father_name, first_name, gender, inactive, last_name, mother_name, phone, sm_user_id, DESIGNATION) VALUES (1, 'Dhaka', 0, 'shikhor@gmail.com', 'S', 'SK.', 'M', 0, 'Roy', 'SH.', '01788210215', 1, null);
-INSERT INTO app.sm_user_detail (id, address, deleted, designation, email, father_name, first_name, gender, inactive, last_name, mother_name, phone, sm_user_id) VALUES (2, null, 0, 'Admin', '', null, 'Root', null, 0, 'User', null, '', null);
+INSERT INTO app.sm_user_detail (id, address, deleted, designation, email, father_name, first_name, gender, inactive, last_name, mother_name, phone, sm_user_id) VALUES (2, null, 0, 'Admin', '', null, 'Root', null, 0, 'User', null, '', 2);
 
-INSERT INTO app.sm_user (id, deleted, inactive, sm_config_type_id, username) VALUES (1, 0, 0, null, 'roy');
+INSERT INTO app.sm_user (id, deleted, inactive, password, sm_config_type_id, username) VALUES (1, 0, 0, '$2a$10$mls2vIDenxTAQluuslAu8OB6ij3XHc2SHqpjEPSzW4/WPduTk.nS2', null, 'roy');
 INSERT INTO app.sm_user (id, deleted, inactive, password, sm_config_type_id, username) VALUES (2, 0, 0, '$2a$10$mls2vIDenxTAQluuslAu8OB6ij3XHc2SHqpjEPSzW4/WPduTk.nS2', null, 'user');
 
 INSERT INTO app.sm_post (id, deleted, inactive, modified_on, posted_on, privacy, sm_app_config_id, status, sm_user_id) VALUES (3, 0, 0, '2019-05-11 00:00:00', null, 'PUBLIC', 1, 'Test', 1);

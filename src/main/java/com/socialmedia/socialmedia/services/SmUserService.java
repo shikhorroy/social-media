@@ -35,7 +35,7 @@ public class SmUserService extends RService<SmUserDao> {
     ModelAndView mv = new ModelAndView();
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
     String currentPrincipalName = authentication.getName();
-    Optional<SmUserDetail> smUserDetailOpt = smUserDetailDao.findByUserUsername("roy");
+    Optional<SmUserDetail> smUserDetailOpt = smUserDetailDao.findByUserUsername(currentPrincipalName);
     if (smUserDetailOpt.isPresent()) {
       SmUserDetail smUserDetail = smUserDetailOpt.get();
 
@@ -50,7 +50,7 @@ public class SmUserService extends RService<SmUserDao> {
     }
     else mv.addObject("smUserDetail", new SmUserDetail());
 
-    List<SmPost> publicPostList = smPostService.getDao().findAllByUserIdAndUserUsernameOrderByIdDesc(1, "roy");
+    List<SmPost> publicPostList = smPostService.getDao().findAllByUserUsernameOrderByIdDesc(currentPrincipalName);
     mv.addObject("publicPostList", publicPostList);
 
     mv.setViewName("user/Profile");

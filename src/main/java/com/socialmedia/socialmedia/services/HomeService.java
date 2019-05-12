@@ -32,7 +32,7 @@ public class HomeService extends RService<HomeDao> {
     ModelAndView mv = new ModelAndView();
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
     String currentPrincipalName = authentication.getName();
-    Optional<SmUserDetail> smUserDetailOpt = smUserDetailDao.findByUserUsername("roy");
+    Optional<SmUserDetail> smUserDetailOpt = smUserDetailDao.findByUserUsername(currentPrincipalName);
     if (smUserDetailOpt.isPresent()) {
       SmUserDetail smUserDetail = smUserDetailOpt.get();
 
