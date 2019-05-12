@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Title: social-media
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: shikhor
+Implementation-Vendor-Id: com.socialmedia
+Created-By: IntelliJ IDEA
+Build-Jdk: 1.8.0_191
+Main-Class: ${start-class}
+
