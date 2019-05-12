@@ -35,4 +35,7 @@ user: roy, password: 123
 release/version_0.1
 
 If you want you can take a pull into your tomcat and just run your tomcat server.
+
 I have test my application in apache-tomcat-8.5.38
+
+Prerequisits: keep a schema in your mysql db named: app
