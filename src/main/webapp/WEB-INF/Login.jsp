@@ -27,13 +27,20 @@
           </ul>
         </div>
 
-        <div class="w-50"></div>
+        <div class="w-50">
+          <ul class="nav" style="float: right">
+            <li class="nav-item active">
+              <%String postsUrl = request.getContextPath() + "/Posts/";%>
+              <a class="nav-link text-white" href="<%= postsUrl%>"><i class="fas fa-book"></i> Posts </a>
+            </li>
+          </ul>
+        </div>
       </nav>
     </div>
   </div>
 
   <div class="content row min-height reset-padding">
-    <div class="content-left col-sm-3">
+    <div class="content-left col-sm-3">-
       <%--<section>--%>
         <%--<div  class="box-design bg-success">--%>
           <%--<b><i class="fas fa-user-plus"></i> User Registration</b>--%>
