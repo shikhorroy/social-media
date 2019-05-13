@@ -7,6 +7,8 @@ This is a mini social media project.
 - Spring MVC
 - Spring Security
 - Spring Form
+- JSP
+- JSTL
 - Hibernate
 - Bootstarp
 - Fontawsome
